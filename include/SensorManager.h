@@ -27,5 +27,4 @@ public:
 
     ~SensorManager() = default;
 };
-
 #endif
