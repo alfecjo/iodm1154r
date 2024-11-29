@@ -1,7 +1,8 @@
 #include "SensorManager.h"
 #include "SensorPressao.h"
 #include "SensorTemperatura.h"
-//#include "SensorUmidade.h"
+#include "SensorUmidade.h"
+
 
 int main()
 {
@@ -11,6 +12,10 @@ int main()
     // adicionar sensor de pressão
     manager.addSensor(std::make_unique<SensorPressao>());
     // adicionar sensor de Temperatura
+    manager.addSensor(std::make_unique<SensorTemperatura>());
+    // adicionar sensor de Umidade
+    manager.addSensor(std::make_unique<SensorUmidade>());
+    // adicionar sensor de Umidade
     manager.addSensor(std::make_unique<SensorTemperatura>());
     // adicionar sensor de Umidade
 
