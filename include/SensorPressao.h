@@ -4,7 +4,7 @@
 #include "Sensor.h"
 
 class SensorPressao : public Sensor
-{
+{    
 public:
     float readValue() override
     {
@@ -16,5 +16,4 @@ public:
         return "Presão ";
     }
 };
-
 #endif

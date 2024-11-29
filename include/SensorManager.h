@@ -3,37 +3,29 @@
 
 #include <iostream>
 #include <vector>
+#include <memory> // Uso de smat pointers
 #include "Sensor.h"
 
 class SensorManager
 {
 private:
-    std::vector<Sensor *> sensors;
+    std::vector<std::unique_ptr<Sensor>> sensors;
 
 public:
-    SensorManager(/* args */);
-    ~SensorManager();
-
-    void addSensor(Sensor *sensor)
+    void addSensor(std::unique_ptr<Sensor> sensor)
     {
-        sensors.push_back(sensor);
+        sensors.push_back(std::move(sensor));
     }
 
-    void readAllSensors()
+    void readAllSensors() const
     {
-        for (Sensor *sensor : sensors)
+        for (const auto& sensor : sensors)
         {
             printf("Sensor: %s, - Valor: %.2f\n", sensor->getType(), sensor->readValue());
         }
     }
 
-    ~SensorManager()
-    {
-        for (Sensor *sensor : sensors)
-        {
-            delete sensor; //Libera memória
-        }
-    }
+    ~SensorManager() = default;
 };
 
 #endif
